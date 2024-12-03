@@ -11,7 +11,7 @@ class DisplayInfor extends React.Component {
   };
   render() {
     const { listUsers } = this.props;
-    // console.log(listUsers);
+    
     return (
       <div>
         <div>
@@ -23,20 +23,18 @@ class DisplayInfor extends React.Component {
             {this.state.isShowList === true ? "Hide List" : "Show List"}
           </span>
         </div>
-        {listUsers.map((user, index) => {
-          console.log(user);
-
-          return (
-            <div>
-              {this.state.isShowList && (
+        {this.state.isShowList && (
+          <div>
+            {listUsers.map((user, index) => {
+              return (
                 <div key={user.id} className={+user.age > 18 ? "green" : "red"}>
                   <div> My name is {user.name}</div>
                   <div> My age is {user.age}</div>
                 </div>
-              )}
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        )}
       </div>
     );
   }
