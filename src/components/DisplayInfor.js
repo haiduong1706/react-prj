@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DisplayInfor.scss";
 import logo from "./../logo.svg";
 
@@ -46,10 +46,18 @@ const DisplayInfor = (props) => {
     setShowList(!isShowList);
   };
 
+  useEffect(() => {
+    if (listUsers.length === 0) {
+      alert("deleted all users");
+    }
+    console.log("Effect");
+  }, [listUsers]);
   return (
     <div className="display-infor-container">
       <div>
-        <span onClick={() => handleShowList()}>{isShowList === true? "Hide list":"Show list"}</span>
+        <span onClick={() => handleShowList()}>
+          {isShowList === true ? "Hide list" : "Show list"}
+        </span>
       </div>
       {isShowList && (
         <>
