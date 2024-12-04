@@ -3,15 +3,29 @@ import "./DisplayInfor.scss";
 import logo from "./../logo.svg";
 
 class DisplayInfor extends React.Component {
-  state = {
-    isShowList: true,
-  };
+  constructor(props) {
+    console.log("constructer");
+    super(props);
+    this.state = {
+      isShowList: true,
+    };
+  }
+  componentDidMount() {
+    console.log("Didmout");
+    setTimeout(() => {
+      document.title = "Haiduong";
+    }, 1500);
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log("update", this.props, prevProps);
+  }
   handleShow = () => {
     this.setState({
       isShowList: !this.state.isShowList,
     });
   };
   render() {
+    console.log("render");
     const { listUsers } = this.props;
 
     return (
